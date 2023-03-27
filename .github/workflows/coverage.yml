@@ -23,4 +23,4 @@ jobs:
         label: 'Test coverage'
         status: ${{ steps.coverage.outputs.lines }}
         color: 'blue,555,daf'
-        path: badge.svg
+        path: ./badge.svg
