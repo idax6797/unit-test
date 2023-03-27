@@ -8,14 +8,4 @@ jobs:
       - run: |
               npm install
               npm run test:unit
-      - name: Test NPM test:unit
-        run: |
-          npm install -f
-          npm run test:unit:coverage:ci
-
-      - name: Jest coverage report
-        uses: ArtiomTr/jest-coverage-report-action@v2.0.8
-        with:
-          skip-step: all
-          coverage-file: ./test/unit/coverage/report.json
-          base-coverage-file: ./test/unit/coverage/report.json
+              npm run coverage
