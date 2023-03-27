@@ -1,24 +1,11 @@
 name: Run Unit Tests
 "on": push
 jobs:
-  unit-test:
+  unit_test-lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: |
               npm install
               npm run test:unit
-              npm run coverage           
-    steps:
-      - name: Generate a coverage value
-      - id: coverage
-      - run: |
-        COVERAGE="$( parse-coverage-report )"
-        echo "##[set-output name=lines;]${COVERAGE}%"
-      - name: Generate the badge SVG image
-        uses: emibcn/badge-action@v1
-        with:
-          label: 'Test coverage'
-          status: ${{ steps.coverage.outputs.lines }}
-          color: 'blue,555,daf'
-          path: badge.svg
+              npm run coverage
