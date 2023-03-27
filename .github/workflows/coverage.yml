@@ -17,6 +17,8 @@ jobs:
         COVERAGE=$(cat ./coverage/lcov.info | grep 'total' | awk '{print $3}')
         echo "##[set-output name=lines;]${COVERAGE}%"
       id: coverage
+    - name: Debug coverage variable
+      run: echo ${{ steps.coverage.outputs.lines }}
     - name: Generate the badge SVG image
       uses: emibcn/badge-action@v2.0.2
       with:
