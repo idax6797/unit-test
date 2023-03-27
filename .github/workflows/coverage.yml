@@ -18,9 +18,9 @@ jobs:
         echo "##[set-output name=lines;]${COVERAGE}%"
       id: coverage
     - name: Generate the badge SVG image
-      uses: emibcn/badge-action@v1
+      uses: emibcn/badge-action@v2.0.2
       with:
         label: 'Test coverage'
         status: ${{ steps.coverage.outputs.lines }}
         color: 'blue,555,daf'
-        path: ./badge.svg
+        path: '.github/badges/badge.svg'
