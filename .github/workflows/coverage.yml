@@ -1,28 +1,18 @@
-on:
-  push:
-  
+# .github/workflows/test.yml
+name: Test
+on: [push, pull_request, workflow_dispatch]
 jobs:
-  coverage:
+  test:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Install dependencies and run tests
-      run: |
-        npm install
-        npm run test:unit
-    - name: Generate coverage report
-      run: |
-        npm run coverage
-        COVERAGE=$(cat ./coverage/lcov.info | grep 'total' | awk '{print $3}')
-        echo "##[set-output name=lines;]${COVERAGE}%"
-      id: coverage
-    - name: Debug coverage variable
-      run: echo ${{ steps.coverage.outputs.lines }}
-    - name: Generate the badge SVG image
-      uses: emibcn/badge-action@v2.0.2
-      with:
-        label: 'Test coverage'
-        status: ${{ steps.coverage.outputs.lines }}
-        color: 'blue,555,daf'
-        path: '.github/badges/badge.svg'
+      # Your original steps
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Install
+        run: npm install
+      - name: Test and Coverage
+        run: npm run coverage
+
+      # Add this
+      - name: Update Coverage Badge
+        uses: we-cli/coverage-badge-action@main

@@ -1,6 +1,7 @@
 # vue-project
 
-[![Test coverage](./badge.svg)](./coverage/lcov-report/index.html)
+<!-- README.md -->
++ [![cov](https://idax6797.github.io/unit-test/badges/coverage.svg)](https://github.com/idax6797/unit-test/actions)
 
 This template should help get you started developing with Vue 3 in Vite.
 
