@@ -15,7 +15,7 @@ jobs:
     - name: Run tests and generate coverage report
       id: coverage
       run: |
-        npm run test:coverage
+        npm run coverage
         COVERAGE=$(cat ./coverage/lcov.info | grep 'total' | awk '{print $3}')
         echo "##[set-output name=lines;]${COVERAGE}%"
 
