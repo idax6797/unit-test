@@ -6,11 +6,17 @@ jobs:
     name: Generate test coverage badge
     steps:
 
-    - name: Generate a coverage value
-      id: coverage
-      # Generates a GitHub Workflow output named `lines`
+    # Install dependencies
+    - name: Install dependencies
       run: |
-        COVERAGE="$( parse-coverage-report )"
+        npm install
+
+    # Run tests and generate coverage report
+    - name: Run tests and generate coverage report
+      id: coverage
+      run: |
+        npm run test:coverage
+        COVERAGE=$(cat ./coverage/lcov.info | grep 'total' | awk '{print $3}')
         echo "##[set-output name=lines;]${COVERAGE}%"
 
     # Use the output from the `coverage` step
